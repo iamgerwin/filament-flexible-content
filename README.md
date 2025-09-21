@@ -3,14 +3,14 @@
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/iamgerwin/filament-flexible-content.svg?style=flat-square)](https://packagist.org/packages/iamgerwin/filament-flexible-content)
 [![Total Downloads](https://img.shields.io/packagist/dt/iamgerwin/filament-flexible-content.svg?style=flat-square)](https://packagist.org/packages/iamgerwin/filament-flexible-content)
 ![PHP Version](https://img.shields.io/packagist/php-v/iamgerwin/filament-flexible-content?style=flat-square)
-![Filament Version](https://img.shields.io/badge/Filament-v3.2%20%7C%20v4.0-blue?style=flat-square)
+![Filament Version](https://img.shields.io/badge/Filament-v4.0-blue?style=flat-square)
 
 Flexible Content & Repeater Fields for Laravel Filament v4. Built with PHP 8.2+ features for maximum performance and type safety.
 
 ## Features
 
 - 🎨 **Flexible Layout System** - Create custom content layouts with ease
-- 🔧 **Built for Filament v3 & v4** - Seamlessly integrates with Filament's form builder
+- 🔧 **Built for Filament v4** - Seamlessly integrates with Filament's form builder
 - 🚀 **PHP 8.2+ Optimized** - Leverages modern PHP features for performance
 - 📦 **Preset Support** - Bundle layouts into reusable presets
 - 🎯 **Type-Safe** - Full type declarations and strict typing throughout
@@ -22,8 +22,8 @@ Flexible Content & Repeater Fields for Laravel Filament v4. Built with PHP 8.2+ 
 ## Requirements
 
 - PHP ^8.2
-- Laravel ^10.0 or ^11.0
-- Filament ^3.2 or ^4.0
+- Laravel ^11.0 or ^12.0
+- Filament ^4.0
 
 ## Installation
 
