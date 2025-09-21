@@ -45,7 +45,8 @@ final class FlexibleContent extends Builder implements FlexibleContentContract
 
         $this->columnSpanFull();
         $this->collapsible();
-        $this->cloneable();
+        $this->configureCloneable();
+        $this->configureAddable();
         $this->reorderable();
         $this->blockNumbers(false);
     }
@@ -80,6 +81,10 @@ final class FlexibleContent extends Builder implements FlexibleContentContract
     {
         $this->maxLayouts = $maximum;
         $this->maxItems($maximum);
+
+        // Reconfigure cloneable and addable to respect the maximum
+        $this->configureCloneable();
+        $this->configureAddable();
 
         return $this;
     }
@@ -136,6 +141,52 @@ final class FlexibleContent extends Builder implements FlexibleContentContract
         });
 
         return $this;
+    }
+
+    protected function configureCloneable(): void
+    {
+        // If there's a max limit, make cloneable conditional
+        if ($this->maxLayouts !== null) {
+            $this->cloneable(function ($component, $state) {
+                $maxLayouts = $this->evaluate($this->maxLayouts);
+
+                if ($maxLayouts === null) {
+                    return true;
+                }
+
+                // Count current items
+                $currentCount = is_array($state) ? count($state) : 0;
+
+                // Disable cloning if we've reached the maximum
+                return $currentCount < $maxLayouts;
+            });
+        } else {
+            // No limit, enable cloning
+            $this->cloneable();
+        }
+    }
+
+    protected function configureAddable(): void
+    {
+        // If there's a max limit, make addable conditional
+        if ($this->maxLayouts !== null) {
+            $this->addable(function ($component, $state) {
+                $maxLayouts = $this->evaluate($this->maxLayouts);
+
+                if ($maxLayouts === null) {
+                    return true;
+                }
+
+                // Count current items
+                $currentCount = is_array($state) ? count($state) : 0;
+
+                // Disable adding if we've reached the maximum
+                return $currentCount < $maxLayouts;
+            });
+        } else {
+            // No limit, enable adding
+            $this->addable();
+        }
     }
 
     public function getLayouts(): Collection
