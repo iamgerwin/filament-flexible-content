@@ -7,6 +7,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.2.0] - 2024-09-22
+
+### Added
+- Laravel 10 support
+- Filament v3.2 support
+- Improved reactive behavior for dependsOn functionality
+- Automatic live() behavior for dependent fields
+- Tests for reactive dependency updates
+
+### Changed
+- Broadened Laravel version constraint to ^10.0|^11.0
+- Broadened Filament version constraint to ^3.2 || ^4.0
+
+### Fixed
+- Fixed dependsOn not updating when dependent field values change
+- Improved real-time visibility updates for dependent components
+
 ## [1.1.0] - 2024-09-22
 
 ### Added
