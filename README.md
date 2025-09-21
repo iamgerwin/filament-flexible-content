@@ -22,7 +22,7 @@ Flexible Content & Repeater Fields for Laravel Filament v4. Built with PHP 8.2+ 
 ## Requirements
 
 - PHP ^8.2
-- Laravel ^10.0 or ^11.0
+- Laravel ^10.0, ^11.0, or ^12.0
 - Filament ^3.2 or ^4.0
 
 ## Installation
