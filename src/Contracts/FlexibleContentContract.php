@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace IamGerwin\FilamentFlexibleContent\Contracts;
 
 use Closure;
-use Illuminate\Support\Collection;
 use IamGerwin\FilamentFlexibleContent\Layouts\Preset;
+use Illuminate\Support\Collection;
 
 interface FlexibleContentContract
 {

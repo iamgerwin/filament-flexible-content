@@ -5,11 +5,10 @@ declare(strict_types=1);
 namespace IamGerwin\FilamentFlexibleContent\Layouts;
 
 use Closure;
-use Filament\Forms\Components\Field;
-use Illuminate\Support\Str;
 use IamGerwin\FilamentFlexibleContent\Concerns\HasName;
 use IamGerwin\FilamentFlexibleContent\Concerns\HasTitle;
 use IamGerwin\FilamentFlexibleContent\Contracts\LayoutContract;
+use Illuminate\Support\Str;
 
 abstract class Layout implements LayoutContract
 {
@@ -35,7 +34,7 @@ abstract class Layout implements LayoutContract
 
     public static function make(): static
     {
-        return new static();
+        return new static;
     }
 
     protected function setUp(): void

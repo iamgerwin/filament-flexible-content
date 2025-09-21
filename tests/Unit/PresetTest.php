@@ -5,7 +5,8 @@ declare(strict_types=1);
 use IamGerwin\FilamentFlexibleContent\Layouts\Preset;
 
 it('can create a preset instance', function () {
-    $preset = new class extends Preset {
+    $preset = new class extends Preset
+    {
         public function register(): void
         {
             // Empty registration for testing
@@ -17,7 +18,8 @@ it('can create a preset instance', function () {
 });
 
 it('can add layouts to preset', function () {
-    $preset = new class extends Preset {
+    $preset = new class extends Preset
+    {
         public function register(): void {}
     };
 
@@ -25,7 +27,7 @@ it('can add layouts to preset', function () {
     $layout2 = createTestLayout('content');
 
     $preset->addLayout($layout1)
-           ->addLayout($layout2);
+        ->addLayout($layout2);
 
     expect($preset->count())->toBe(2)
         ->and($preset->hasLayout('hero'))->toBeTrue()
@@ -34,7 +36,8 @@ it('can add layouts to preset', function () {
 });
 
 it('can add multiple layouts at once', function () {
-    $preset = new class extends Preset {
+    $preset = new class extends Preset
+    {
         public function register(): void {}
     };
 
@@ -53,12 +56,13 @@ it('can add multiple layouts at once', function () {
 });
 
 it('can remove layout from preset', function () {
-    $preset = new class extends Preset {
+    $preset = new class extends Preset
+    {
         public function register(): void {}
     };
 
     $preset->addLayout(createTestLayout('hero'))
-           ->addLayout(createTestLayout('content'));
+        ->addLayout(createTestLayout('content'));
 
     expect($preset->count())->toBe(2);
 
@@ -70,7 +74,8 @@ it('can remove layout from preset', function () {
 });
 
 it('can get specific layout from preset', function () {
-    $preset = new class extends Preset {
+    $preset = new class extends Preset
+    {
         public function register(): void {}
     };
 
@@ -85,7 +90,8 @@ it('can get specific layout from preset', function () {
 });
 
 it('can convert preset to array', function () {
-    $preset = new class extends Preset {
+    $preset = new class extends Preset
+    {
         public function register(): void {}
     };
 

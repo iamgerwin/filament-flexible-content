@@ -44,8 +44,8 @@ it('can access data with dot notation', function () {
             'title' => 'Main Title',
             'settings' => [
                 'color' => 'blue',
-                'size' => 'large'
-            ]
+                'size' => 'large',
+            ],
         ]
     );
 
@@ -61,7 +61,7 @@ it('can check if data exists', function () {
         data: [
             'title' => 'Test',
             'empty' => null,
-            'nested' => ['key' => 'value']
+            'nested' => ['key' => 'value'],
         ]
     );
 
@@ -78,7 +78,7 @@ it('can access metadata', function () {
         meta: [
             'order' => 1,
             'visibility' => 'public',
-            'settings' => ['theme' => 'dark']
+            'settings' => ['theme' => 'dark'],
         ]
     );
 
@@ -132,7 +132,7 @@ it('can convert to json', function () {
             'layout' => 'content',
             'data' => ['text' => 'Hello'],
             'key' => 'xyz',
-            'meta' => []
+            'meta' => [],
         ]);
 });
 

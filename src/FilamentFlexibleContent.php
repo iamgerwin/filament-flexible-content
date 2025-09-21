@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace IamGerwin\FilamentFlexibleContent;
 
-use Illuminate\Support\Collection;
 use IamGerwin\FilamentFlexibleContent\Layouts\Layout;
 use IamGerwin\FilamentFlexibleContent\Layouts\Preset;
+use Illuminate\Support\Collection;
 
 final class FilamentFlexibleContent
 {
@@ -23,7 +23,7 @@ final class FilamentFlexibleContent
     public function registerLayout(Layout|string $layout): self
     {
         if (is_string($layout) && class_exists($layout)) {
-            $layout = new $layout();
+            $layout = new $layout;
         }
 
         if ($layout instanceof Layout) {
@@ -45,7 +45,7 @@ final class FilamentFlexibleContent
     public function registerPreset(Preset|string $preset, ?string $name = null): self
     {
         if (is_string($preset) && class_exists($preset)) {
-            $preset = new $preset();
+            $preset = new $preset;
         }
 
         if ($preset instanceof Preset) {

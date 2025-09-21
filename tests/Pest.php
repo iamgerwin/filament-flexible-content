@@ -12,7 +12,8 @@ expect()->extend('toBeOne', function () {
 
 function createTestLayout(string $name = 'test'): \IamGerwin\FilamentFlexibleContent\Layouts\Layout
 {
-    return new class($name) extends \IamGerwin\FilamentFlexibleContent\Layouts\Layout {
+    return new class($name) extends \IamGerwin\FilamentFlexibleContent\Layouts\Layout
+    {
         public function __construct(private string $layoutName)
         {
             $this->name = $layoutName;

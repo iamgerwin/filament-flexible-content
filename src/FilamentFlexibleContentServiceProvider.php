@@ -4,13 +4,12 @@ declare(strict_types=1);
 
 namespace IamGerwin\FilamentFlexibleContent;
 
-use Filament\Support\Assets\Asset;
 use Filament\Support\Assets\Js;
 use Filament\Support\Facades\FilamentAsset;
+use IamGerwin\FilamentFlexibleContent\Commands\CreateLayout;
 use Spatie\LaravelPackageTools\Commands\InstallCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use IamGerwin\FilamentFlexibleContent\Commands\CreateLayout;
 
 final class FilamentFlexibleContentServiceProvider extends PackageServiceProvider
 {
@@ -21,7 +20,7 @@ final class FilamentFlexibleContentServiceProvider extends PackageServiceProvide
     public function configurePackage(Package $package): void
     {
         $package
-            ->name(static::$name)
+            ->name(self::$name)
             ->hasCommands($this->getCommands())
             ->hasInstallCommand(function (InstallCommand $command) {
                 $command
@@ -46,13 +45,13 @@ final class FilamentFlexibleContentServiceProvider extends PackageServiceProvide
         }
 
         if (file_exists($package->basePath('/../resources/views'))) {
-            $package->hasViews(static::$viewNamespace);
+            $package->hasViews(self::$viewNamespace);
         }
     }
 
     public function packageRegistered(): void
     {
-        $this->app->scoped('filament-flexible-content', fn () => new FilamentFlexibleContent());
+        $this->app->scoped('filament-flexible-content', fn () => new FilamentFlexibleContent);
     }
 
     public function packageBooted(): void
@@ -66,7 +65,7 @@ final class FilamentFlexibleContentServiceProvider extends PackageServiceProvide
     protected function getAssets(): array
     {
         return [
-            Js::make('filament-flexible-content', __DIR__ . '/../resources/dist/filament-flexible-content.js'),
+            Js::make('filament-flexible-content', __DIR__.'/../resources/dist/filament-flexible-content.js'),
         ];
     }
 

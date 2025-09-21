@@ -28,7 +28,7 @@ class TestCase extends Orchestra
     public function getEnvironmentSetUp($app): void
     {
         config()->set('database.default', 'testing');
-        config()->set('app.key', 'base64:' . base64_encode('test-key-for-testing'));
+        config()->set('app.key', 'base64:'.base64_encode('test-key-for-testing'));
 
         $migration = include __DIR__.'/../database/migrations/create_test_tables.php.stub';
         $migration->up();

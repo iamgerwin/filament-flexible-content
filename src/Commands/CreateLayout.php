@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace IamGerwin\FilamentFlexibleContent\Commands;
 
 use Illuminate\Console\Command;
-use Illuminate\Support\Str;
 use Illuminate\Filesystem\Filesystem;
+use Illuminate\Support\Str;
 
 final class CreateLayout extends Command
 {
@@ -38,6 +38,7 @@ final class CreateLayout extends Command
 
         if ($this->files->exists($path)) {
             $this->error("The {$className} already exists!");
+
             return self::FAILURE;
         }
 

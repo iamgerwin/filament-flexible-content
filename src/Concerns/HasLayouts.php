@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace IamGerwin\FilamentFlexibleContent\Concerns;
 
 use Closure;
-use Illuminate\Support\Collection;
 use IamGerwin\FilamentFlexibleContent\Layouts\Layout;
+use Illuminate\Support\Collection;
 
 trait HasLayouts
 {
@@ -15,7 +15,7 @@ trait HasLayouts
     public function registerLayout(Layout|string $layout): static
     {
         if (is_string($layout) && class_exists($layout)) {
-            $layout = new $layout();
+            $layout = new $layout;
         }
 
         if ($layout instanceof Layout) {

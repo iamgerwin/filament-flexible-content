@@ -7,11 +7,11 @@ namespace IamGerwin\FilamentFlexibleContent\Forms\Components;
 use Closure;
 use Filament\Forms\Components\Builder;
 use Filament\Forms\Components\Builder\Block;
-use Illuminate\Support\Collection;
-use IamGerwin\FilamentFlexibleContent\Layouts\Layout;
-use IamGerwin\FilamentFlexibleContent\Layouts\Preset;
 use IamGerwin\FilamentFlexibleContent\Concerns\HasLayouts;
 use IamGerwin\FilamentFlexibleContent\Contracts\FlexibleContentContract;
+use IamGerwin\FilamentFlexibleContent\Layouts\Layout;
+use IamGerwin\FilamentFlexibleContent\Layouts\Preset;
+use Illuminate\Support\Collection;
 
 final class FlexibleContent extends Builder implements FlexibleContentContract
 {
@@ -58,7 +58,7 @@ final class FlexibleContent extends Builder implements FlexibleContentContract
     public function preset(Preset|string|null $preset): static
     {
         if (is_string($preset) && class_exists($preset)) {
-            $preset = new $preset();
+            $preset = new $preset;
         }
 
         $this->preset = $preset;
