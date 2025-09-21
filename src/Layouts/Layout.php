@@ -27,6 +27,10 @@ abstract class Layout implements LayoutContract
 
     protected bool|Closure $visible = true;
 
+    protected array $dependencies = [];
+
+    protected Closure|bool|null $dependsOnClosure = null;
+
     protected array $attributes = [];
 
     public function __construct()
@@ -101,6 +105,41 @@ abstract class Layout implements LayoutContract
         return $this;
     }
 
+    public function dependsOn(string|array $fields, Closure|bool|null $condition = null): static
+    {
+        if (is_string($fields)) {
+            $fields = [$fields];
+        }
+
+        $this->dependencies = $fields;
+        $this->dependsOnClosure = $condition;
+
+        // Combine the dependency condition with the existing visibility
+        $originalVisible = $this->visible;
+
+        $this->visible = function ($get) use ($originalVisible) {
+            // First check the original visibility condition
+            $isOriginallyVisible = is_bool($originalVisible) ? $originalVisible : $originalVisible($get);
+
+            if (!$isOriginallyVisible) {
+                return false;
+            }
+
+            // Then check the dependency condition
+            if ($this->dependsOnClosure === null) {
+                return true;
+            }
+
+            if (is_bool($this->dependsOnClosure)) {
+                return $this->dependsOnClosure;
+            }
+
+            return ($this->dependsOnClosure)($get);
+        };
+
+        return $this;
+    }
+
     public function getIcon(): ?string
     {
         return $this->evaluate($this->icon);
@@ -121,8 +160,12 @@ abstract class Layout implements LayoutContract
         return $this->evaluate($this->columns);
     }
 
-    public function isVisible(): bool
+    public function isVisible($get = null): bool
     {
+        if ($get !== null && is_callable($this->visible)) {
+            return ($this->visible)($get);
+        }
+
         return $this->evaluate($this->visible);
     }
 
@@ -153,6 +196,7 @@ abstract class Layout implements LayoutContract
             'limit' => $this->getLimit(),
             'columns' => $this->getColumns(),
             'visible' => $this->isVisible(),
+            'dependencies' => $this->dependencies,
             'attributes' => $this->attributes,
         ];
     }
