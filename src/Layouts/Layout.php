@@ -128,26 +128,6 @@ abstract class Layout implements LayoutContract
         return ! $this->isVisible();
     }
 
-    public function icon(): ?string
-    {
-        return $this->getIcon();
-    }
-
-    public function fields(): array
-    {
-        return $this->getFields();
-    }
-
-    public function limit(): ?int
-    {
-        return $this->getLimit();
-    }
-
-    public function columns(): int
-    {
-        return $this->getColumns();
-    }
-
     public function with(string $key, mixed $value): static
     {
         $this->attributes[$key] = $value;
@@ -165,10 +145,10 @@ abstract class Layout implements LayoutContract
         return [
             'name' => $this->name(),
             'title' => $this->title(),
-            'icon' => $this->icon(),
-            'fields' => $this->fields(),
-            'limit' => $this->limit(),
-            'columns' => $this->columns(),
+            'icon' => $this->getIcon(),
+            'fields' => $this->getFields(),
+            'limit' => $this->getLimit(),
+            'columns' => $this->getColumns(),
             'visible' => $this->isVisible(),
             'attributes' => $this->attributes,
         ];

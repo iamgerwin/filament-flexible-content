@@ -117,10 +117,10 @@ final class FlexibleContent extends Builder implements FlexibleContentContract
     {
         return Block::make($layout->name())
             ->label($layout->title())
-            ->icon($layout->icon())
-            ->schema($layout->fields())
-            ->columns($layout->columns())
-            ->maxItems($layout->limit())
+            ->icon($layout->getIcon())
+            ->schema($layout->getFields())
+            ->columns($layout->getColumns())
+            ->maxItems($layout->getLimit())
             ->visible($layout->isVisible());
     }
 
