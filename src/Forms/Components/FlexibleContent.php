@@ -7,7 +7,6 @@ namespace IamGerwin\FilamentFlexibleContent\Forms\Components;
 use Closure;
 use Filament\Forms\Components\Builder;
 use Filament\Forms\Components\Builder\Block;
-use IamGerwin\FilamentFlexibleContent\Concerns\EvaluatesClosures;
 use IamGerwin\FilamentFlexibleContent\Concerns\HasLayouts;
 use IamGerwin\FilamentFlexibleContent\Contracts\FlexibleContentContract;
 use IamGerwin\FilamentFlexibleContent\Layouts\Layout;
@@ -16,7 +15,6 @@ use Illuminate\Support\Collection;
 
 final class FlexibleContent extends Builder implements FlexibleContentContract
 {
-    use EvaluatesClosures;
     use HasLayouts;
 
     protected array|Closure $layouts = [];
