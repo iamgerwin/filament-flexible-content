@@ -3,14 +3,14 @@
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/iamgerwin/filament-flexible-content.svg?style=flat-square)](https://packagist.org/packages/iamgerwin/filament-flexible-content)
 [![Total Downloads](https://img.shields.io/packagist/dt/iamgerwin/filament-flexible-content.svg?style=flat-square)](https://packagist.org/packages/iamgerwin/filament-flexible-content)
 ![PHP Version](https://img.shields.io/packagist/php-v/iamgerwin/filament-flexible-content?style=flat-square)
-![Filament Version](https://img.shields.io/badge/Filament-v3.2%2B-blue?style=flat-square)
+![Filament Version](https://img.shields.io/badge/Filament-v3.2%20%7C%20v4.0-blue?style=flat-square)
 
-A powerful and flexible content builder for Filament v3, providing an elegant way to build custom page content using predefined layouts. Built with PHP 8.3+ features for maximum performance and type safety.
+A powerful and flexible content builder for Filament v3 and v4, providing an elegant way to build custom page content using predefined layouts. Built with PHP 8.3+ features for maximum performance and type safety.
 
 ## Features
 
 - 🎨 **Flexible Layout System** - Create custom content layouts with ease
-- 🔧 **Built for Filament v3** - Seamlessly integrates with Filament's form builder
+- 🔧 **Built for Filament v3 & v4** - Seamlessly integrates with Filament's form builder
 - 🚀 **PHP 8.3 Optimized** - Leverages the latest PHP features for performance
 - 📦 **Preset Support** - Bundle layouts into reusable presets
 - 🎯 **Type-Safe** - Full type declarations and strict typing throughout
@@ -23,7 +23,7 @@ A powerful and flexible content builder for Filament v3, providing an elegant wa
 
 - PHP ^8.3
 - Laravel ^10.0 or ^11.0
-- Filament ^3.2
+- Filament ^3.2 or ^4.0
 
 ## Installation
 
