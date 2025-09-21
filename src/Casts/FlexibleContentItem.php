@@ -10,15 +10,15 @@ use JsonSerializable;
 
 final readonly class FlexibleContentItem implements Arrayable, Jsonable, JsonSerializable
 {
+    public string $key;
+
     public function __construct(
         public string $layout,
         public array $data = [],
-        public string $key = '',
+        string $key = '',
         public array $meta = []
     ) {
-        if (empty($this->key)) {
-            $this->key = uniqid();
-        }
+        $this->key = $key ?: uniqid();
     }
 
     public function get(string $key, mixed $default = null): mixed
