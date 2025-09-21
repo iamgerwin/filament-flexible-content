@@ -16,7 +16,8 @@ class MaxLayoutsEnforcementTest extends TestCase
     /** @test */
     public function it_disables_clone_button_when_max_layouts_reached()
     {
-        $component = new class extends Component {
+        $component = new class extends Component
+        {
             public array $data = [];
 
             public function form($form)
@@ -63,7 +64,8 @@ class MaxLayoutsEnforcementTest extends TestCase
     /** @test */
     public function it_disables_add_button_when_max_layouts_reached()
     {
-        $component = new class extends Component {
+        $component = new class extends Component
+        {
             public array $data = [];
 
             public function form($form)
@@ -108,7 +110,8 @@ class MaxLayoutsEnforcementTest extends TestCase
     /** @test */
     public function it_allows_cloning_when_below_max_layouts()
     {
-        $component = new class extends Component {
+        $component = new class extends Component
+        {
             public array $data = [];
 
             public function form($form)
@@ -151,7 +154,8 @@ class MaxLayoutsEnforcementTest extends TestCase
     /** @test */
     public function it_respects_max_layouts_with_closures()
     {
-        $component = new class extends Component {
+        $component = new class extends Component
+        {
             public array $data = ['max_allowed' => 2];
 
             public function form($form)
@@ -195,7 +199,8 @@ class MaxLayoutsEnforcementTest extends TestCase
     /** @test */
     public function it_enables_cloning_when_no_max_layouts_set()
     {
-        $component = new class extends Component {
+        $component = new class extends Component
+        {
             public array $data = [];
 
             public function form($form)
@@ -234,6 +239,7 @@ class MaxLayoutsEnforcementTest extends TestCase
 class TestMaxLayout extends Layout
 {
     protected ?string $name = 'test_max';
+
     protected ?string $title = 'Test Max Layout';
 
     protected function setUp(): void
