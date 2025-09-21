@@ -100,8 +100,11 @@ final class FlexibleContent extends Builder implements FlexibleContentContract
         $this->dependencies = $fields;
         $this->dependsOnClosure = $condition;
 
-        // Apply reactive behavior to parent component
+        // Make the component reactive to the dependent fields
         $this->reactive();
+
+        // Add live behavior to ensure real-time updates
+        $this->live();
 
         // Set up visibility based on the condition
         $this->visible(function ($get) {
@@ -114,6 +117,22 @@ final class FlexibleContent extends Builder implements FlexibleContentContract
             }
 
             return ($this->dependsOnClosure)($get);
+        });
+
+        // Also make dependent fields reactive if they exist in the same form
+        $this->afterStateHydrated(function ($component, $state) use ($fields) {
+            $form = $component->getContainer();
+
+            foreach ($fields as $field) {
+                try {
+                    $dependentComponent = $form->getComponent($field);
+                    if ($dependentComponent && method_exists($dependentComponent, 'live')) {
+                        $dependentComponent->live();
+                    }
+                } catch (\Exception $e) {
+                    // Field might not exist in the same container, ignore
+                }
+            }
         });
 
         return $this;
