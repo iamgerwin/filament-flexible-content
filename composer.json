@@ -1,6 +1,6 @@
 {
     "name": "iamgerwin/filament-flexible-content",
-    "description": "A flexible content field for Filament v4, providing an elegant way to build custom page content using predefined layouts.",
+    "description": "Flexible Content & Repeater Fields for Laravel Filament v4",
     "keywords": [
         "filament",
         "flexible-content",
@@ -12,13 +12,13 @@
     "license": "MIT",
     "authors": [
         {
-            "name": "Gerwin",
-            "email": "gerwin@example.com",
+            "name": "iamgerwin",
+            "email": "iamgerwin@live.com",
             "role": "Developer"
         }
     ],
     "require": {
-        "php": "^8.3",
+        "php": "^8.2",
         "filament/filament": "^3.2 || ^4.0",
         "illuminate/contracts": "^10.0|^11.0",
         "spatie/laravel-package-tools": "^1.16"
