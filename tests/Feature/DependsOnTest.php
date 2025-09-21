@@ -34,8 +34,8 @@ class DependsOnTest extends TestCase
         $layout = $this->createLayoutWithDependency();
 
         // Create a mock $get function
-        $getLocal = fn($field) => $field === 'scope' ? 'local' : null;
-        $getNational = fn($field) => $field === 'scope' ? 'national' : null;
+        $getLocal = fn ($field) => $field === 'scope' ? 'local' : null;
+        $getNational = fn ($field) => $field === 'scope' ? 'national' : null;
 
         // Test when condition is not met
         $this->assertFalse($layout->isVisible($getLocal));
@@ -69,17 +69,17 @@ class DependsOnTest extends TestCase
 
         // Test when both conditions are not met
         $livewire->set('data.type', 'local')
-                 ->set('data.status', 'draft');
+            ->set('data.status', 'draft');
         $this->assertFalse($livewire->instance()->form->getComponent('content')->isVisible());
 
         // Test when only one condition is met
         $livewire->set('data.type', 'national')
-                 ->set('data.status', 'draft');
+            ->set('data.status', 'draft');
         $this->assertFalse($livewire->instance()->form->getComponent('content')->isVisible());
 
         // Test when both conditions are met
         $livewire->set('data.type', 'national')
-                 ->set('data.status', 'published');
+            ->set('data.status', 'published');
         $this->assertTrue($livewire->instance()->form->getComponent('content')->isVisible());
     }
 
@@ -88,9 +88,9 @@ class DependsOnTest extends TestCase
     {
         $layout = TestLayout::make()
             ->visible(false)
-            ->dependsOn('type', fn($get) => $get('type') === 'national');
+            ->dependsOn('type', fn ($get) => $get('type') === 'national');
 
-        $getNational = fn($field) => $field === 'type' ? 'national' : null;
+        $getNational = fn ($field) => $field === 'type' ? 'national' : null;
 
         // Even if dependency is met, original visibility should be respected
         $this->assertFalse($layout->isVisible($getNational));
@@ -104,7 +104,7 @@ class DependsOnTest extends TestCase
                     Select::make('type')
                         ->options(['local' => 'Local', 'national' => 'National']),
                     FlexibleContent::make('content')
-                        ->dependsOn('type', fn($get) => $get('type') === 'national')
+                        ->dependsOn('type', fn ($get) => $get('type') === 'national')
                         ->layouts([
                             TestLayout::make(),
                         ]),
@@ -116,13 +116,14 @@ class DependsOnTest extends TestCase
     protected function createLayoutWithDependency(): Layout
     {
         return TestLayout::make()
-            ->dependsOn('scope', fn($get) => $get('scope') === 'national');
+            ->dependsOn('scope', fn ($get) => $get('scope') === 'national');
     }
 }
 
 class TestLayout extends Layout
 {
     protected ?string $name = 'test_layout';
+
     protected ?string $title = 'Test Layout';
 
     protected function setUp(): void

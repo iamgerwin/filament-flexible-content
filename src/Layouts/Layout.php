@@ -121,7 +121,7 @@ abstract class Layout implements LayoutContract
             // First check the original visibility condition
             $isOriginallyVisible = is_bool($originalVisible) ? $originalVisible : $originalVisible($get);
 
-            if (!$isOriginallyVisible) {
+            if (! $isOriginallyVisible) {
                 return false;
             }
 
