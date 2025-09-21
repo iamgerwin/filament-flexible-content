@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.2.1] - 2024-09-22
+
+### Fixed
+- Fixed clone button not respecting maxLayouts limit
+- Fixed add button not respecting maxLayouts limit when maximum is reached
+- Clone and add buttons now properly disable when layout count reaches the maximum
+
+### Added
+- Tests for maxLayouts enforcement with cloning and adding
+
 ## [1.2.0] - 2024-09-22
 
 ### Added
