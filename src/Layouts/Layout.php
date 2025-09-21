@@ -39,7 +39,7 @@ abstract class Layout implements LayoutContract
      */
     public static function make(): static
     {
-        return new static();
+        return new static;
     }
 
     protected function setUp(): void

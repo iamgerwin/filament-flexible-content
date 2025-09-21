@@ -148,5 +148,4 @@ final class FlexibleContent extends Builder implements FlexibleContentContract
             })
             ->toArray();
     }
-
 }
