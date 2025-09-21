@@ -4,15 +4,16 @@ declare(strict_types=1);
 
 namespace IamGerwin\FilamentFlexibleContent\Layouts\Examples;
 
+use Closure;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\TextInput;
 use IamGerwin\FilamentFlexibleContent\Layouts\Layout;
 
 final class ContentLayout extends Layout
 {
-    protected ?string $name = 'content';
+    protected string|Closure|null $name = 'content';
 
-    protected ?string $title = 'Rich Content';
+    protected string|Closure|null $title = 'Rich Content';
 
     protected function setUp(): void
     {

@@ -149,37 +149,4 @@ final class FlexibleContent extends Builder implements FlexibleContentContract
             ->toArray();
     }
 
-    public function fill(?array $state = null): static
-    {
-        if (is_array($state)) {
-            $state = collect($state)
-                ->map(function (array $item) {
-                    return [
-                        'type' => $item['layout'] ?? $item['type'] ?? '',
-                        'data' => array_merge(
-                            $item['data'] ?? [],
-                            ['block_key' => $item['key'] ?? uniqid()]
-                        ),
-                    ];
-                })
-                ->toArray();
-        }
-
-        return parent::fill($state);
-    }
-
-    public function getRules(): array
-    {
-        $rules = parent::getRules();
-
-        if ($this->minLayouts !== null) {
-            $rules[] = "min:{$this->evaluate($this->minLayouts)}";
-        }
-
-        if ($this->maxLayouts !== null) {
-            $rules[] = "max:{$this->evaluate($this->maxLayouts)}";
-        }
-
-        return $rules;
-    }
 }

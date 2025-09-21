@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace IamGerwin\FilamentFlexibleContent\Layouts\Examples;
 
+use Closure;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
@@ -13,9 +14,9 @@ use IamGerwin\FilamentFlexibleContent\Layouts\Layout;
 
 final class HeroLayout extends Layout
 {
-    protected ?string $name = 'hero';
+    protected string|Closure|null $name = 'hero';
 
-    protected ?string $title = 'Hero Section';
+    protected string|Closure|null $title = 'Hero Section';
 
     protected function setUp(): void
     {

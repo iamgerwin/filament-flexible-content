@@ -1,6 +1,2 @@
 parameters:
-    ignoreErrors:
-        -
-            identifier: missingType.iterableValue
-        -
-            identifier: missingType.generics
+    ignoreErrors: []
