@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.0] - 2024-09-22
+
+### Added
+- Conditional visibility support with `dependsOn()` method for FlexibleContent component
+- Conditional visibility support for individual Layout components
+- Support for single and multiple field dependencies
+- Reactive behavior integration for dynamic form updates
+- Comprehensive test coverage for dependency functionality
+
+### Changed
+- Updated Layout `isVisible()` method to accept optional `$get` parameter
+- Enhanced Block creation to pass form state to visibility checks
+
 ## [1.0.0] - 2024-01-01
 
 ### Added
