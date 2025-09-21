@@ -24,7 +24,7 @@ final readonly class FlexibleContentCast implements CastsAttributes
             return new FlexibleContentItem(
                 layout: $item['layout'] ?? $item['type'] ?? '',
                 data: $item['data'] ?? [],
-                key: $item['key'] ?? uniqid(),
+                key: $item['key'] ?? null,
                 meta: $item['meta'] ?? []
             );
         });

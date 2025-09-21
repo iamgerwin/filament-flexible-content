@@ -8,17 +8,17 @@ use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Contracts\Support\Jsonable;
 use JsonSerializable;
 
-final readonly class FlexibleContentItem implements Arrayable, Jsonable, JsonSerializable
+final class FlexibleContentItem implements Arrayable, Jsonable, JsonSerializable
 {
-    public string $key;
+    public readonly string $key;
 
     public function __construct(
-        public string $layout,
-        public array $data = [],
-        string $key = '',
-        public array $meta = []
+        public readonly string $layout,
+        public readonly array $data = [],
+        ?string $key = null,
+        public readonly array $meta = []
     ) {
-        $this->key = $key ?: uniqid();
+        $this->key = $key ?? uniqid();
     }
 
     public function get(string $key, mixed $default = null): mixed

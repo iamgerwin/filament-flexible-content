@@ -19,10 +19,10 @@ it('can set layout properties', function () {
         ->columns(3)
         ->limit(5);
 
-    expect($layout->title())->toBe('Content Block')
-        ->and($layout->icon())->toBe('heroicon-o-document-text')
-        ->and($layout->columns())->toBe(3)
-        ->and($layout->limit())->toBe(5);
+    expect($layout->getTitle())->toBe('Content Block')
+        ->and($layout->getIcon())->toBe('heroicon-o-document-text')
+        ->and($layout->getColumns())->toBe(3)
+        ->and($layout->getLimit())->toBe(5);
 });
 
 it('can add fields to layout', function () {
@@ -33,8 +33,8 @@ it('can add fields to layout', function () {
 
     $layout = createTestLayout('test')->fields($fields);
 
-    expect($layout->fields())->toBe($fields)
-        ->and($layout->fields())->toHaveCount(2);
+    expect($layout->getFields())->toBe($fields)
+        ->and($layout->getFields())->toHaveCount(2);
 });
 
 it('can control visibility', function () {
