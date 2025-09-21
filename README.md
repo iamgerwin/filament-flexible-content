@@ -184,6 +184,43 @@ FlexibleContent::make('content')
     ->columnSpanFull()           // Full width
 ```
 
+### Conditional Visibility with dependsOn
+
+The FlexibleContent field supports conditional visibility based on other form fields:
+
+```php
+// Show flexible content only when type is 'national'
+FlexibleContent::make('content')
+    ->dependsOn('type', fn ($get) => $get('type') === 'national')
+    ->layouts([/* ... */])
+
+// Multiple field dependencies
+FlexibleContent::make('content')
+    ->dependsOn(['type', 'status'], function ($get) {
+        return $get('type') === 'national' && $get('status') === 'published';
+    })
+    ->layouts([/* ... */])
+```
+
+You can also apply conditional visibility to individual layouts:
+
+```php
+class ConditionalLayout extends Layout
+{
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        // Only show this layout when scope is 'global'
+        $this->dependsOn('scope', fn ($get) => $get('scope') === 'global');
+
+        $this->fields([
+            TextInput::make('title')->required(),
+        ]);
+    }
+}
+```
+
 ### Database Integration
 
 Add the cast to your model:
