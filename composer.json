@@ -68,5 +68,11 @@
         }
     },
     "minimum-stability": "dev",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "repositories": {
+        "filament-flexible-content": {
+            "type": "vcs",
+            "url": "https://github.com/iamgerwin/filament-flexible-content.git"
+        }
+    }
 }
