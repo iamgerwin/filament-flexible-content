@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace IamGerwin\FilamentFlexibleContent\Layouts;
 
 use Closure;
+use IamGerwin\FilamentFlexibleContent\Concerns\EvaluatesClosures;
 use IamGerwin\FilamentFlexibleContent\Concerns\HasName;
 use IamGerwin\FilamentFlexibleContent\Concerns\HasTitle;
 use IamGerwin\FilamentFlexibleContent\Contracts\LayoutContract;
@@ -12,6 +13,7 @@ use Illuminate\Support\Str;
 
 abstract class Layout implements LayoutContract
 {
+    use EvaluatesClosures;
     use HasName;
     use HasTitle;
 
@@ -170,14 +172,5 @@ abstract class Layout implements LayoutContract
             'visible' => $this->isVisible(),
             'attributes' => $this->attributes,
         ];
-    }
-
-    protected function evaluate(mixed $value): mixed
-    {
-        if ($value instanceof Closure) {
-            return $value($this);
-        }
-
-        return $value;
     }
 }
