@@ -17,7 +17,8 @@ class ReactiveDependsOnTest extends TestCase
     /** @test */
     public function it_reactively_updates_visibility_when_dependent_field_changes()
     {
-        $component = new class extends Component {
+        $component = new class extends Component
+        {
             public array $data = ['type' => 'local'];
 
             public function form($form)
@@ -53,17 +54,18 @@ class ReactiveDependsOnTest extends TestCase
 
         // Change to 'national' - should become visible
         $livewire->set('data.type', 'national')
-                 ->assertSee('content');
+            ->assertSee('content');
 
         // Change back to 'local' - should become hidden again
         $livewire->set('data.type', 'local')
-                 ->assertDontSee('content');
+            ->assertDontSee('content');
     }
 
     /** @test */
     public function it_makes_dependent_fields_live_automatically()
     {
-        $component = new class extends Component {
+        $component = new class extends Component
+        {
             public array $data = ['status' => 'draft'];
 
             public function form($form)
@@ -101,10 +103,11 @@ class ReactiveDependsOnTest extends TestCase
     /** @test */
     public function it_handles_multiple_dependencies_reactively()
     {
-        $component = new class extends Component {
+        $component = new class extends Component
+        {
             public array $data = [
                 'type' => 'local',
-                'status' => 'draft'
+                'status' => 'draft',
             ];
 
             public function form($form)
@@ -149,21 +152,22 @@ class ReactiveDependsOnTest extends TestCase
 
         // Set type to national - still hidden (status is draft)
         $livewire->set('data.type', 'national')
-                 ->assertDontSee('content');
+            ->assertDontSee('content');
 
         // Set status to published - now visible
         $livewire->set('data.status', 'published')
-                 ->assertSee('content');
+            ->assertSee('content');
 
         // Change either back - becomes hidden
         $livewire->set('data.type', 'local')
-                 ->assertDontSee('content');
+            ->assertDontSee('content');
     }
 }
 
 class SimpleTestLayout extends Layout
 {
     protected ?string $name = 'simple_test';
+
     protected ?string $title = 'Simple Test Layout';
 
     protected function setUp(): void
