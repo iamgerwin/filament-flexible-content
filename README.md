@@ -5,13 +5,13 @@
 ![PHP Version](https://img.shields.io/packagist/php-v/iamgerwin/filament-flexible-content?style=flat-square)
 ![Filament Version](https://img.shields.io/badge/Filament-v3.2%20%7C%20v4.0-blue?style=flat-square)
 
-A powerful and flexible content builder for Filament v3 and v4, providing an elegant way to build custom page content using predefined layouts. Built with PHP 8.3+ features for maximum performance and type safety.
+Flexible Content & Repeater Fields for Laravel Filament v4. Built with PHP 8.2+ features for maximum performance and type safety.
 
 ## Features
 
 - 🎨 **Flexible Layout System** - Create custom content layouts with ease
 - 🔧 **Built for Filament v3 & v4** - Seamlessly integrates with Filament's form builder
-- 🚀 **PHP 8.3 Optimized** - Leverages the latest PHP features for performance
+- 🚀 **PHP 8.2+ Optimized** - Leverages modern PHP features for performance
 - 📦 **Preset Support** - Bundle layouts into reusable presets
 - 🎯 **Type-Safe** - Full type declarations and strict typing throughout
 - 🧩 **Extensible** - Easy to extend with custom layouts and functionality
@@ -21,7 +21,7 @@ A powerful and flexible content builder for Filament v3 and v4, providing an ele
 
 ## Requirements
 
-- PHP ^8.3
+- PHP ^8.2
 - Laravel ^10.0 or ^11.0
 - Filament ^3.2 or ^4.0
 
@@ -259,7 +259,7 @@ Please review [our security policy](../../security/policy) on how to report secu
 
 ## Credits
 
-- [Gerwin](https://github.com/iamgerwin)
+- [iamgerwin](https://github.com/iamgerwin)
 - [All Contributors](../../contributors)
 
 ## License
