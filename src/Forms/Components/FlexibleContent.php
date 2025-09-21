@@ -31,6 +31,10 @@ final class FlexibleContent extends Builder implements FlexibleContentContract
 
     protected array|Closure $limitedToLayouts = [];
 
+    protected array $dependencies = [];
+
+    protected Closure|bool|null $dependsOnClosure = null;
+
     public function setUp(): void
     {
         parent::setUp();
@@ -87,6 +91,34 @@ final class FlexibleContent extends Builder implements FlexibleContentContract
         return $this;
     }
 
+    public function dependsOn(string|array $fields, Closure|bool|null $condition = null): static
+    {
+        if (is_string($fields)) {
+            $fields = [$fields];
+        }
+
+        $this->dependencies = $fields;
+        $this->dependsOnClosure = $condition;
+
+        // Apply reactive behavior to parent component
+        $this->reactive();
+
+        // Set up visibility based on the condition
+        $this->visible(function ($get) {
+            if ($this->dependsOnClosure === null) {
+                return true;
+            }
+
+            if (is_bool($this->dependsOnClosure)) {
+                return $this->dependsOnClosure;
+            }
+
+            return ($this->dependsOnClosure)($get);
+        });
+
+        return $this;
+    }
+
     public function getLayouts(): Collection
     {
         $layouts = $this->evaluate($this->layouts);
@@ -121,7 +153,7 @@ final class FlexibleContent extends Builder implements FlexibleContentContract
             ->schema($layout->getFields())
             ->columns($layout->getColumns())
             ->maxItems($layout->getLimit())
-            ->visible($layout->isVisible());
+            ->visible(fn ($get) => $layout->isVisible($get));
     }
 
     public function hasLimitedLayouts(): bool
