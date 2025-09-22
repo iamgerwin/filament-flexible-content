@@ -17,21 +17,46 @@ class DependsOnTest extends TestCase
     /** @test */
     public function it_can_conditionally_show_flexible_content_based_on_dependency()
     {
-        $component = $this->createFormWithDependency();
+        $component = new class extends Component
+        {
+            public array $data = ['type' => 'local'];
+
+            public function form($form)
+            {
+                return $form
+                    ->schema([
+                        Select::make('type')
+                            ->options(['local' => 'Local', 'national' => 'National']),
+                        FlexibleContent::make('content')
+                            ->dependsOn('type', fn ($get) => $get('type') === 'national')
+                            ->layouts([
+                                TestLayout::make(),
+                            ]),
+                    ])
+                    ->statePath('data');
+            }
+
+            public function render()
+            {
+                return '<div></div>';
+            }
+        };
+
+        $livewire = Livewire::test($component);
 
         // Test when condition is not met
-        $component->fill(['type' => 'local']);
-        $this->assertFalse($component->form->getComponent('content')->isVisible());
+        $this->assertFalse($livewire->instance()->form->getComponent('content')->isVisible());
 
-        // Test when condition is met
-        $component->fill(['type' => 'national']);
-        $this->assertTrue($component->form->getComponent('content')->isVisible());
+        // Change to national and test
+        $livewire->set('data.type', 'national');
+        $this->assertTrue($livewire->instance()->form->getComponent('content')->isVisible());
     }
 
     /** @test */
     public function it_can_conditionally_show_layouts_based_on_dependency()
     {
-        $layout = $this->createLayoutWithDependency();
+        $layout = TestLayout::make()
+            ->dependsOn('scope', fn ($get) => $get('scope') === 'national');
 
         // Create a mock $get function
         $getLocal = fn ($field) => $field === 'scope' ? 'local' : null;
@@ -47,23 +72,37 @@ class DependsOnTest extends TestCase
     /** @test */
     public function it_supports_multiple_field_dependencies()
     {
-        $component = Component::extend('TestComponent', [
-            'form' => function () {
-                return $this->form([
-                    Select::make('type')
-                        ->options(['local' => 'Local', 'national' => 'National']),
-                    Select::make('status')
-                        ->options(['draft' => 'Draft', 'published' => 'Published']),
-                    FlexibleContent::make('content')
-                        ->dependsOn(['type', 'status'], function ($get) {
-                            return $get('type') === 'national' && $get('status') === 'published';
-                        })
-                        ->layouts([
-                            TestLayout::make(),
-                        ]),
-                ]);
-            },
-        ]);
+        $component = new class extends Component
+        {
+            public array $data = [
+                'type' => 'local',
+                'status' => 'draft',
+            ];
+
+            public function form($form)
+            {
+                return $form
+                    ->schema([
+                        Select::make('type')
+                            ->options(['local' => 'Local', 'national' => 'National']),
+                        Select::make('status')
+                            ->options(['draft' => 'Draft', 'published' => 'Published']),
+                        FlexibleContent::make('content')
+                            ->dependsOn(['type', 'status'], function ($get) {
+                                return $get('type') === 'national' && $get('status') === 'published';
+                            })
+                            ->layouts([
+                                TestLayout::make(),
+                            ]),
+                    ])
+                    ->statePath('data');
+            }
+
+            public function render()
+            {
+                return '<div></div>';
+            }
+        };
 
         $livewire = Livewire::test($component);
 
@@ -96,28 +135,7 @@ class DependsOnTest extends TestCase
         $this->assertFalse($layout->isVisible($getNational));
     }
 
-    protected function createFormWithDependency()
-    {
-        return Component::extend('TestComponent', [
-            'form' => function () {
-                return $this->form([
-                    Select::make('type')
-                        ->options(['local' => 'Local', 'national' => 'National']),
-                    FlexibleContent::make('content')
-                        ->dependsOn('type', fn ($get) => $get('type') === 'national')
-                        ->layouts([
-                            TestLayout::make(),
-                        ]),
-                ]);
-            },
-        ]);
-    }
 
-    protected function createLayoutWithDependency(): Layout
-    {
-        return TestLayout::make()
-            ->dependsOn('scope', fn ($get) => $get('scope') === 'national');
-    }
 }
 
 class TestLayout extends Layout

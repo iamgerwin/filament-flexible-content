@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.2.3] - 2025-09-23
+
+### Fixed
+- Fixed PHPStan static analysis errors in Layout classes
+- Fixed test class property type conflicts with parent Layout class
+- Fixed TestCase encryption key configuration for Livewire tests
+- Updated GitHub Actions release workflow to use maintained action
+
+### Changed
+- Test layout classes now set properties in setUp() method instead of declarations
+- Improved test structure for better compatibility with Filament forms
+
 ## [1.2.2] - 2024-09-22
 
 ### Added

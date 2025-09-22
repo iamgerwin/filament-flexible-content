@@ -1,6 +1,6 @@
 {
     "name": "iamgerwin/filament-flexible-content",
-    "version": "1.2.2",
+    "version": "1.2.3",
     "description": "Flexible Content & Repeater Fields for Laravel Filament v4",
     "keywords": [
         "filament",

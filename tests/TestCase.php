@@ -33,7 +33,7 @@ class TestCase extends Orchestra
             'database' => ':memory:',
             'prefix' => '',
         ]);
-        config()->set('app.key', 'base64:'.base64_encode('test-key-for-testing'));
+        config()->set('app.key', 'base64:2fl+Ktvkfl+Fuz4Qp/A75G2RTiWVA/ZoKZvp6fiiM10=');
 
         $migration = include __DIR__.'/../database/migrations/create_test_tables.php.stub';
         $migration->up();
