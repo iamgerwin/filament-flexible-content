@@ -238,13 +238,12 @@ class MaxLayoutsEnforcementTest extends TestCase
 
 class TestMaxLayout extends Layout
 {
-    protected ?string $name = 'test_max';
-
-    protected ?string $title = 'Test Max Layout';
-
     protected function setUp(): void
     {
         parent::setUp();
+
+        $this->name = 'test_max';
+        $this->title = 'Test Max Layout';
 
         $this->fields([
             TextInput::make('title')->required(),

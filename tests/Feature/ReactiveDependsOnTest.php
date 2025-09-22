@@ -166,13 +166,12 @@ class ReactiveDependsOnTest extends TestCase
 
 class SimpleTestLayout extends Layout
 {
-    protected ?string $name = 'simple_test';
-
-    protected ?string $title = 'Simple Test Layout';
-
     protected function setUp(): void
     {
         parent::setUp();
+
+        $this->name = 'simple_test';
+        $this->title = 'Simple Test Layout';
 
         $this->fields([
             TextInput::make('title')->required(),

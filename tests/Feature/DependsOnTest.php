@@ -122,13 +122,12 @@ class DependsOnTest extends TestCase
 
 class TestLayout extends Layout
 {
-    protected ?string $name = 'test_layout';
-
-    protected ?string $title = 'Test Layout';
-
     protected function setUp(): void
     {
         parent::setUp();
+
+        $this->name = 'test_layout';
+        $this->title = 'Test Layout';
 
         $this->fields([
             TextInput::make('title')->required(),
