@@ -39,11 +39,11 @@ abstract class Layout implements LayoutContract
     }
 
     /**
-     * @phpstan-ignore-next-line
+     * @return static
      */
     public static function make(): static
     {
-        return new static;
+        return new static(); // @phpstan-ignore-line
     }
 
     protected function setUp(): void

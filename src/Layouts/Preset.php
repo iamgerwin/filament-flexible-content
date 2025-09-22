@@ -18,11 +18,11 @@ abstract class Preset implements PresetContract
     }
 
     /**
-     * @phpstan-ignore-next-line
+     * @return static
      */
     public static function make(): static
     {
-        return new static;
+        return new static(); // @phpstan-ignore-line
     }
 
     public function addLayout(Layout $layout): static
