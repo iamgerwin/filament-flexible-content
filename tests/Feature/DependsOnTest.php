@@ -134,8 +134,6 @@ class DependsOnTest extends TestCase
         // Even if dependency is met, original visibility should be respected
         $this->assertFalse($layout->isVisible($getNational));
     }
-
-
 }
 
 class TestLayout extends Layout

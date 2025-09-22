@@ -17,12 +17,9 @@ abstract class Preset implements PresetContract
         $this->register();
     }
 
-    /**
-     * @return static
-     */
     public static function make(): static
     {
-        return new static(); // @phpstan-ignore-line
+        return new static; // @phpstan-ignore-line
     }
 
     public function addLayout(Layout $layout): static
