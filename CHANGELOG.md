@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.2.2] - 2024-09-22
+
+### Added
+- Packagist setup documentation for automatic updates
+- GitHub Actions workflow for automated release creation
+- Comprehensive guide for webhook configuration
+
+### Improved
+- Documentation structure and organization
+- Release process automation
+
 ## [1.2.1] - 2024-09-22
 
 ### Fixed
